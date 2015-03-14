@@ -1,0 +1,25 @@
+body {
+  width: 800px;
+}
+code {
+  color: #c7254e;
+}
+.markdown-body {
+  font-size: 14px;
+}
+.gbs-a {
+  color: #5eb95e;
+  background-color: rgba(94, 185, 94, .115)
+}
+.gbs-b {
+  color: #f37b1d;
+  background-color: rgba(243, 123, 29, .115)
+}
+.gbs-c {
+  color: #dd514c;
+  background-color: rgba(221, 81, 76, .115)
+}
+.gbs-x {
+  color: #0b76ac;
+  background-color: rgba(14, 144, 210, .115)
+}

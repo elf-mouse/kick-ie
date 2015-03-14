@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+}
+#ie-warning {
+  font: 16px/1.5 Arial, sans-serif;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: .2em 0;
+  text-align: center;
+  border: 1px solid;
+}
+#ie-warning a {
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 1px dashed;
+}
+#ie-warning-close {
+  font: bold 24px/1 Arial, sans-serif;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: inherit;
+  padding: .2em;
+  cursor: pointer;
+  border: none !important;
+}
+#ie-warning-heading {
+  font: 32px/1.5 Arial, sans-serif;
+  position: absolute;
+  top: 45%;
+  right: 0;
+  left: 0;
+  text-align: center;
+}

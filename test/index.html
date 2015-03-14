@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7 ]> <html lang="zh-CN" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="zh-CN" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="zh-CN" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="zh-CN" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="zh-CN" class="no-js"> <!--<![endif]-->
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Hello Browser</title>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
+  <link rel="stylesheet" href="main.css">
+  <script src="bower_components/modernizr/modernizr.js"></script>
+</head>
+
+<!-- Using Conditional Comments -->
+
+<body>
+
+  <!--[if lt IE 7]>
+  <p style="background: black; color: red;">Internet Explorer 6</p>
+  <![endif]-->
+
+  <!--[if IE 7]>
+  <p style="color: red;">Internet Explorer 7</p>
+  <ul>
+    <li>360安全（默认兼容）</li>
+    <li>遨游（默认兼容）</li>
+    <li>360急速（兼容）</li>
+    <li>世界之窗</li>
+  </ul>
+  <![endif]-->
+
+  <!--[if IE 8]>
+  <p class="gbs-c">Internet Explorer 8</p>
+  <ul>
+    <li>360安全（X-UA-Compatible）</li>
+    <li>遨游（X-UA-Compatible）</li>
+    <li>360急速（X-UA-Compatible）</li>
+    <li>搜狗（默认兼容）</li>
+    <li>QQ</li>
+    <li>2345</li>
+    <li>360急速（IE8）</li>
+    <li>猎豹（兼容）</li>
+    <li>百度（兼容）</li>
+    <li>hao123</li>
+  </ul>
+  <![endif]-->
+
+  <!--[if IE 9]>
+  <p class="gbs-b">Internet Explorer 9</p>
+  <![endif]-->
+
+  <!--[if IE 10]>
+  <p class="gbs-a">Internet Explorer 10</p>
+  <![endif]-->
+
+  <!--[if !IE]><!-->
+  <p class="gbs-a">Great</p>
+  <ul>
+    <li>360急速（默认急速）</li>
+    <li>猎豹（默认急速）</li>
+    <li>百度（默认急速）</li>
+    <li>360安全（急速）</li>
+    <li>遨游（急速）</li>
+    <li>搜狗（急速）</li>
+  </ul>
+  <!--<![endif]-->
+
+  <!--[if WindowsEdition 1]>
+  <p>You are using Windows Ultimate Edition.</p>
+  <![endif]-->
+
+  <!--[if lt Contoso 2]>
+  <p>Your version of the Contoso control is out of date; Please update to the latest.</p>
+  <![endif]-->
+
+  <hr>
+  <label>User Agent: </label><span id="UA"></span>
+  <br>
+  <label>IE Version: </label><span id="IE"></span>
+  <br>
+  <label>Document Mode: </label><span id="documentMode"></span>
+  <br>
+  <label>Compat Mode: </label><span id="compatMode"></span>
+  <br>
+  <label>Box Model: </label>
+  <div id="box-outer">
+    <div id="box"></div>
+  </div>
+  <br>
+
+  <script src="spm_modules/seajs/2.3.0/dist/sea.js"></script>
+  <script src="spm_modules/seajs-wrap/1.0.2/dist/seajs-wrap.js"></script>
+  <script>
+  seajs.config({
+    base: './spm_modules/',
+    alias: {
+      'jquery': 'jquery/1.8.3/jquery.js',
+      'detector': 'detector/2.2.1/detector.js'
+    }
+  });
+  seajs.use('./main');
+  </script>
+
+</body>
+
+</html>
