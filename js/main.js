@@ -35,7 +35,7 @@ var chromeURL = 'http://www.google.com/chrome',
       upgrade: null
     },
     cookieName: 'browsehappy',
-    cookieExpires: 10 // 60 * 60 * 24 * 7 // one week
+    cookieExpires: 1000 * 60 * 60 * 24 * 7 // one week
   },
   microsoft = {
     message: '是时候<a href="http://windows.microsoft.com/zh-cn/windows/upgrade-your-browser" target="_blank">升级</a>你的浏览器了'
@@ -99,7 +99,7 @@ function init(opts) {
           bodyRoot.innerHTML = ''; // 清屏
           IE.IE7.upgrade ? IE.IE7.upgrade() : forceUpgrade(); // 强制升级
         } else {
-        	IE.IE8.upgrade ? IE.IE8.upgrade() : guideUpgrade(); // 引导升级
+          IE.IE8.upgrade ? IE.IE8.upgrade() : guideUpgrade(); // 引导升级
         }
       }
     }

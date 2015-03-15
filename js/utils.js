@@ -87,8 +87,10 @@ function hideMessage() {
   var btn = document.getElementById('ie-warning-close');
 
   addEvent(btn, 'click', function() {
+    var date = new Date();
+    date.setTime(date.getTime() + IE.cookieExpires);
     document.getElementById('ie-warning').style.display = 'none';
-    docCookies.setItem(IE.cookieName, ':(', IE.cookieExpires);
+    docCookies.setItem(IE.cookieName, ':(', date);
   });
 }
 
