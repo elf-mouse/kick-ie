@@ -10,8 +10,6 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Hello Browser</title>
-  <link rel="shortcut icon" href="/favicon.ico">
-  <link rel="stylesheet" href="bower_components/normalize.css/normalize.css">
   <link rel="stylesheet" href="main.css">
   <script src="bower_components/modernizr/modernizr.js"></script>
 </head>
@@ -52,13 +50,11 @@
 
   <!--[if IE 9]>
   <p class="gbs-b">Internet Explorer 9</p>
+  <ul>
+  </ul>
   <![endif]-->
 
-  <!--[if IE 10]>
-  <p class="gbs-a">Internet Explorer 10</p>
-  <![endif]-->
-
-  <!--[if !IE]><!-->
+  <!--[if (gt IE 9)|!(IE)]><!-->
   <p class="gbs-a">Great</p>
   <ul>
     <li>360急速（默认急速）</li>

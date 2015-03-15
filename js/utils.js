@@ -96,10 +96,11 @@ function showMessage(object) {
   if (docCookies.getItem(IE.cookieName) === null) {
     var IEWarning = document.createElement('p');
     IEWarning.id = 'ie-warning';
-    IEWarning.innerHTML = IE.title + '：' + object.message;
+    IEWarning.innerHTML = IE.title + '：' + object.message.replace('{{chromeURL}}', chromeURL);
     IEWarning.style.color = object.color;
     IEWarning.style.borderColor = object.borderColor;
     IEWarning.style.background = object.background;
+
     if (IE.ver > 7) {
       var IEWarningClose = document.createElement('a');
       IEWarningClose.id = 'ie-warning-close';
@@ -107,6 +108,7 @@ function showMessage(object) {
       IEWarning.appendChild(IEWarningClose);
     }
     document.body.appendChild(IEWarning);
+
     if (IE.ver > 7) {
       hideMessage();
     }
