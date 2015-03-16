@@ -21,12 +21,9 @@ IE 8/9
 IE 8
 ----
 
-	﻿<!--[if (gte IE 9)|!(IE)]><!-->
-	<script src="js/jquery/2.x.x/jquery.js"></script>
-	<!--<![endif]-->
+	<script src="js/jquery/1.x.x/jquery.js"></script>
 
 	<!--[if lt IE 9]>
-	<script src="js/jquery/1.x.x/jquery.js"></script>
 	<script src="js/polyfill/html5shiv.js"></script>
 	<script src="js/polyfill/respond.js"></script>
 	<script src="js/polyfill/rem.js"></script>
