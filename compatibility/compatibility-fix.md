@@ -1,7 +1,7 @@
 兼容性解决方案（v1.0.0）
 ========================
 
-- `@author` Elf-mousE <nijun@yiban.cn>
+- `@author` [Elf-mousE](http://elf-mouse.me/)
 
 IE 8/9
 ------
@@ -14,9 +14,9 @@ IE 8/9
 `border-radius` | NO | YES
 `box-shadow` | NO | YES
 `transform` | NO | YES（-ms 前缀）
-`Flex Box` | NO
-`transition` | NO
-`placeholder` | NO
+`Flex Box` | NO | NO
+`transition` | NO | NO
+`placeholder` | NO | NO
 
 IE 8
 ----
