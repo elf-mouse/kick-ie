@@ -1,7 +1,8 @@
 body {
   margin: 0;
 }
-#ie-warning {
+
+#kick-ie {
   font: 16px/1.5 Arial, sans-serif;
   position: fixed;
   top: 0;
@@ -12,12 +13,14 @@ body {
   text-align: center;
   border: 1px solid;
 }
-#ie-warning a {
+
+#kick-ie a {
   font-weight: bold;
   text-decoration: none;
   border-bottom: 1px dashed;
 }
-#ie-warning-close {
+
+#kick-ie-close {
   font: bold 24px/1 Arial, sans-serif;
   position: fixed;
   top: 0;
@@ -27,7 +30,8 @@ body {
   cursor: pointer;
   border: none !important;
 }
-#ie-warning-heading {
+
+#kick-ie-heading {
   font: 32px/1.5 Arial, sans-serif;
   position: absolute;
   top: 45%;
