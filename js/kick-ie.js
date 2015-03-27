@@ -1,8 +1,8 @@
 /**
  * Kick IE
  * @author Elf-mousE
+ * @github https://github.com/elf-mouse/kick-ie
  * @since 2015.03.14
- * @updated 2015.03.18
  */
 (function(window, document, undefined) {
   'use strict';
@@ -49,7 +49,7 @@
         upgrade: null
       },
       cookieName: 'browsehappy',
-      cookieExpires: 5000// 1000 * 60 * 60 * 24 * 7 // one week
+      cookieExpires: 1000 * 60 * 60 * 24 * 7 // one week
     },
     microsoft = {
       message: '是时候<a href="//windows.microsoft.com/zh-cn/windows/upgrade-your-browser" target="_blank">升级</a>你的浏览器了'
@@ -306,7 +306,7 @@
   };
 
   KickIE.init(); // automatic
-  IE.ver = -1;   // reset
+  IE.ver = -1; // reset
 
   // export
   window.KickIE = function(opts) {

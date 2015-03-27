@@ -11,8 +11,9 @@ Kick IE
 
 - IE9 友情提醒升级
 - IE8 强烈推荐升级
-- IE6-7 强制升级
-- 支持[Sea.js](http://seajs.org/)
+- IE6-7 强制升级（业务界面不可见）
+- 检测主牛双(shan)核(zhai)浏览器
+- 支持CMD
 
 使用方法
 --------
@@ -35,40 +36,38 @@ Kick IE
     });*/
     </script>
 
-KickIE方法参数说明
-------------------
+KickIE参数 | 说明
+---------- | ----
+`killIE` | 抵制IE的最大版本，范围：8-9（默认：9）
+`url` | 推荐的浏览器地址（默认：谷歌浏览器官网）
+`label` | 标题党
+`up[7-9]` | 自定义IE7-9的升级提示
 
-- `killIE` 抵制IE的最大版本，范围：8-9（默认：9）
-- `url` 推荐的浏览器地址（默认：谷歌浏览器官网）
-- `label` 标题党
-- `up[7-9]` 自定义IE7-9的升级提示
-
-接口说明
---------
-
-- `KickIE`            // function
-- `KickIE.isIE`       // boolean
-- `KickIE.isDualCore` // boolean
-- `KickIE.IE.ver`     // int
-- `KickIE.IE.lte9`    // boolean
-- `KickIE.IE.lte8`    // boolean
-- `KickIE.IE.lte7`    // boolean
+KickIE接口 | 类型
+---------- | ----
+`KickIE` | function
+`isIE` | boolean
+`isDualCore` | boolean
+`IE.ver` | int
+`IE.lte9` | boolean
+`IE.lte8` | boolean
+`IE.lte7` | boolean
 
 版本说明
 --------
 
-- 2015.03.27
+> 2015.03.27
 
-> 优化export
-> 新增双(shan)核(zhai)浏览器的判断
-> 更新支持Sea.js
-> 更新自动运行程序
-> 修复自定义扩展
+- 优化export
+- 新增 `isDualCore` 双(shan)核(zhai)浏览器的判断
+- 更新支持CMD
+- 更新加载时自动运行 `KickIE`
+- 修复IE8下自定义扩展
 
-- 2015.03.18
+> 2015.03.18
 
-> 更新export
+- 更新export
 
-- 2015.03.14
+> 2015.03.14
 
-> beta版
+- beta版
