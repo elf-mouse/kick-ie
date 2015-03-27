@@ -15,8 +15,12 @@
         heading: 'kick-ie-heading'
       }
     },
-    killIE = 9, // default for lteIE9
+    defaultKillIE = 9, // default for lteIE9
+    killIE = defaultKillIE, // valid value: [8-9]
     isIE = false,
+    isTridentOrWebkit = false,
+    tridentOrWebkitBlacklist = /360SE|BIDUBrowser|LBBROWSER|Maxthon|MetaSr|QQBrowser|UBrowser/i, // up to 2014
+    recommended = '为了获得最佳的浏览体验，我们建议您切换 <strong id="the-flash">急(shan)速(dian)</strong>模式 或选用 <a href="{{chromeURL}}" target="_blank">谷歌浏览器</a>。',
     IE = {
       label: '365 安全卫士提醒',
       ver: -1,
@@ -34,24 +38,24 @@
         color: '#FFF',
         borderColor: '#EDC048',
         background: '#E29808',
-        message: '您的浏览器不是最新的。您正在使用 Internet Explorer 的一个老版本。为了获得最佳的浏览体验，我们建议您选用 <a href="{{chromeURL}}" target="_blank">谷歌浏览器</a>。',
+        message: '您的浏览器不是最新的。您正在使用 Internet Explorer 的一个老版本。' + recommended,
         upgrade: null
       },
       IE7: {
         color: '#FFF',
         borderColor: '#AC1B1B',
         background: '#AC1B1B',
-        message: '似乎您正在使用 Internet Explorer 的一个不安全的版本。使用老旧浏览器会对您的计算机安全造成威胁。<br>在 Windows XP 上，您无法升级到最新版本。为了获得最佳的浏览体验，我们建议您选用 <a href="{{chromeURL}}" target="_blank">谷歌浏览器</a>。',
+        message: '似乎您正在使用 Internet Explorer 的一个不安全的版本。使用老旧浏览器会对您的计算机安全造成威胁。<br>在 Windows XP 上，您无法升级到最新版本。' + recommended,
         upgrade: null
       },
       cookieName: 'browsehappy',
-      cookieExpires: 1000 * 60 * 60 * 24 * 7 // one week
+      cookieExpires: 5000// 1000 * 60 * 60 * 24 * 7 // one week
     },
     microsoft = {
-      message: '是时候<a href="http://windows.microsoft.com/zh-cn/windows/upgrade-your-browser" target="_blank">升级</a>你的浏览器了'
+      message: '是时候<a href="//windows.microsoft.com/zh-cn/windows/upgrade-your-browser" target="_blank">升级</a>你的浏览器了'
     },
     google = {
-      chromeURL: 'http://www.google.com/chrome'
+      chromeURL: '//www.google.com/chrome'
     },
     htmlRoot = document.getElementsByTagName('html')[0],
     bodyRoot = document.getElementsByTagName('body')[0];
@@ -80,6 +84,7 @@
         if (rv === 7 && mode > 7) { // Compatibility View
           rv = mode;
         }
+        isTridentOrWebkit = tridentOrWebkitBlacklist.test(ua);
       }
       return rv;
     };
@@ -179,6 +184,12 @@
       }
     };
 
+    KickIE.resetMessage = function() {
+      if (document.getElementById(KickIE.idName.wrap) !== null) {
+        bodyRoot.removeChild(document.getElementById(KickIE.idName.wrap));
+      }
+    };
+
     KickIE.addClass = function(className) {
       htmlRoot.className += ' ' + className;
     };
@@ -231,7 +242,7 @@
     if (opts.label !== undefined) {
       IE.label = opts.label;
     }
-    for (var i = 7; i <= 9; i++) {
+    for (var i = 7; i <= 9; i++) { // IE 7-9
       if (opts['up' + i] !== undefined && typeof opts['up' + i] === 'function') {
         IE['IE' + i].upgrade = opts['up' + i];
       }
@@ -243,6 +254,7 @@
       console.warn('KickIE was initialized!');
       return;
     }
+    KickIE.resetMessage(); // for custom init
     IE.ver = KickIE.getInternetExplorerVersion();
     if (IE.ver === -1) {
       // nonIE
@@ -272,7 +284,7 @@
         KickIE.addClass('lte9');
         // ES5 polyfill, if you want
         // placeholder plugin or others, if you want
-        if (IE.ver === 9 && killIE === 9) {
+        if (IE.ver === 9 && killIE >= 9) {
           if (IE.IE9.upgrade) {
             IE.IE9.upgrade();
           } else {
@@ -293,13 +305,31 @@
     }
   };
 
-  window.KickIE = KickIE.init;
+  KickIE.init(); // automatic
+  IE.ver = -1;   // reset
+
+  // export
+  window.KickIE = function(opts) {
+    KickIE.init(opts);
+  };
   window.isIE = isIE;
+  window.isDualCore = isTridentOrWebkit;
   window.IE = {
     ver: IE.ver,
     lte9: IE.lte9,
     lte8: IE.lte8,
     lte7: IE.lte7
   };
+
+  // for Sea.js
+  if (typeof define === 'function' && define.cmd) {
+    //console.info('CMD');
+    define(function(require, exports, module) {
+      module.exports = window.KickIE;
+      module.exports.isIE = window.isIE;
+      module.exports.isDualCore = window.isDualCore;
+      module.exports.IE = window.IE;
+    });
+  }
 
 })(window, document);
