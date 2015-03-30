@@ -17,14 +17,21 @@
   /*KickIE({
     killIE: 8,
     url: '#可用的谷歌浏览器下载地址',
-    label: 'XXX砖家提醒',
-    up8: function() {
-      // your code
-      console.log(8);
+    label: '砖家提醒',
+    msg: {
+      ie8: 'IE8 消息提醒',
+      ie7: '<= IE7 消息提醒'
     },
-    up7: function() {
+    up8: function(opts) {
+      console.log(8);
+      var url = opts.url; // #可用的谷歌浏览器下载地址
+      var label = opts.label; // 砖家提醒
+      var msg = opts.msg; // IE8 消息提醒
       // your code
+    },
+    up7: function(opts) {
       console.log(7);
+      // your code
     }
   });*/
   </script>

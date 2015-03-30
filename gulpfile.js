@@ -30,7 +30,7 @@ gulp.task('js', ['jshint'], function() {
 gulp.task('clean', require('del').bind(null, ['.tmp']));
 
 gulp.task('watch', function() {
-  gulp.watch('js/*.js', ['jshint', 'js']);
+  gulp.watch('js/kick-ie.js', ['jshint', 'js']);
 });
 
 gulp.task('build', ['css', 'js'], function() {

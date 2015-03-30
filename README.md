@@ -14,6 +14,7 @@ Kick IE
 - IE6-7 强制升级（业务界面不可见）
 - 检测主牛双(shan)核(zhai)浏览器
 - 支持CMD
+- 自定义IE分级提示内容
 
 使用方法
 --------
@@ -22,17 +23,24 @@ Kick IE
     <script>
     // init for custom
     /*KickIE({
-    killIE: 8,
-    url: '#可用的谷歌浏览器下载地址',
-    label: 'XXX砖家提醒',
-    up8: function() {
-      // your code
-      console.log(8);
-    },
-    up7: function() {
-      // your code
-      console.log(7);
-    }
+      killIE: 8,
+      url: '#可用的谷歌浏览器下载地址',
+      label: '砖家提醒',
+      msg: {
+        ie8: 'IE8 消息提醒',
+        ie7: '<= IE7 消息提醒'
+      },
+      up8: function(opts) {
+        console.log(8);
+        var url = opts.url; // #可用的谷歌浏览器下载地址
+        var label = opts.label; // 砖家提醒
+        var msg = opts.msg; // IE8 消息提醒
+        // your code
+      },
+      up7: function(opts) {
+        console.log(7);
+        // your code
+      }
     });*/
     </script>
 
@@ -40,7 +48,8 @@ KickIE参数 | 说明
 ---------- | ----
 `killIE` | 抵制IE的最大版本，范围：8-9（默认：9）
 `url` | 推荐的浏览器地址（默认：谷歌浏览器官网）
-`label` | 标题党
+`label` | 标题党（默认：365 安全卫士提醒，设为`false`则不显示）
+`msg.ie[7-9]` | 自定义IE7-9的提示消息
 `up[7-9]` | 自定义IE7-9的升级提示
 
 KickIE接口 | 类型
@@ -55,6 +64,13 @@ KickIE接口 | 类型
 
 版本说明
 --------
+
+> 2015.03.30
+
+- 优化标题（可省略）
+- 新增`msg`参数，可自定义提示消息
+- 扩展`up[7-9]`方法参数，可获得传入的`url`,`label`和对应IE版本的`msg`
+- 修复IE7下提示消息中链接的样式问题
 
 > 2015.03.27
 

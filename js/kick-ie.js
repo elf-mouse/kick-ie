@@ -165,7 +165,7 @@
       if (KickIE.cookies.getItem(IE.cookieName) === null) {
         var warning = document.createElement('p');
         warning.id = KickIE.idName.wrap;
-        warning.innerHTML = IE.label + '：' + object.message.replace('{{chromeURL}}', google.chromeURL);
+        warning.innerHTML = (IE.label ? IE.label + '：' : '') + object.message.replace('{{chromeURL}}', google.chromeURL);
         warning.style.color = object.color;
         warning.style.borderColor = object.borderColor;
         warning.style.background = object.background;
@@ -227,11 +227,14 @@
 
     var links = document.getElementsByTagName('a');
     links[0].style.color = 'red';
-    links[1].style.color = 'white';
+    if (links[1] !== undefined) {
+      links[1].style.color = 'white';
+    }
   }
 
   // KickIE set options
   function setOptions(opts) {
+    var i;
     opts = opts || {};
     if (opts.killIE !== undefined) {
       killIE = opts.killIE;
@@ -242,8 +245,15 @@
     if (opts.label !== undefined) {
       IE.label = opts.label;
     }
-    for (var i = 7; i <= 9; i++) { // IE 7-9
-      if (opts['up' + i] !== undefined && typeof opts['up' + i] === 'function') {
+    if (opts.msg !== undefined) {
+      for (i = 7; i <= 9; i++) {
+        if (typeof opts.msg['ie' + i] === 'string') {
+          IE['IE' + i].message = opts.msg['ie' + i];
+        }
+      }
+    }
+    for (i = 7; i <= 9; i++) { // IE 7-9
+      if (typeof opts['up' + i] === 'function') {
         IE['IE' + i].upgrade = opts['up' + i];
       }
     }
@@ -284,9 +294,14 @@
         KickIE.addClass('lte9');
         // ES5 polyfill, if you want
         // placeholder plugin or others, if you want
+        var upgradeParams = {
+          url: google.chromeURL,
+          label: IE.label
+        };
         if (IE.ver === 9 && killIE >= 9) {
           if (IE.IE9.upgrade) {
-            IE.IE9.upgrade();
+            upgradeParams.msg = IE.IE9.message;
+            IE.IE9.upgrade(upgradeParams);
           } else {
             KickIE.showMessage(IE.IE9);
           }
@@ -296,9 +311,11 @@
           if (IE.lte7) {
             KickIE.addClass('lte7');
             bodyRoot.innerHTML = ''; // clear body
-            (IE.IE7.upgrade ? IE.IE7.upgrade : forceUpgrade)();
+            upgradeParams.msg = IE.IE7.message;
+            (IE.IE7.upgrade ? IE.IE7.upgrade : forceUpgrade)(upgradeParams);
           } else {
-            (IE.IE8.upgrade ? IE.IE8.upgrade : guideUpgrade)();
+            upgradeParams.msg = IE.IE8.message;
+            (IE.IE8.upgrade ? IE.IE8.upgrade : guideUpgrade)(upgradeParams);
           }
         }
       }
