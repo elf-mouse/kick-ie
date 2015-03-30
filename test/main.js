@@ -2,6 +2,7 @@ define(function(require) {
 
   var $ = require('jquery');
   var detector = require('detector');
+  //var KickIE = require('../js/kick-ie.min.js');
 
   var output = '';
   $.each(detector, function(key, value) {
@@ -55,7 +56,9 @@ define(function(require) {
     box.innerHTML = box.offsetWidth;
   }
 
-  checkBrowser();
-  checkBoxModel();
+  //if (!KickIE.IE.lte7) {
+    checkBrowser();
+    checkBoxModel();
+  //}
 
 });

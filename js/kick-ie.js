@@ -7,7 +7,8 @@
 (function(window, document, undefined) {
   'use strict';
 
-  var KickIE = {
+  var _instance = null, // Singleton
+    KickIE = {
       css: '#kick-ie,body{margin:0}#kick-ie,#kick-ie-heading{right:0;left:0;text-align:center}#kick-ie{font:16px/1.5 Arial,sans-serif;position:fixed;top:0;padding:.2em 0;border:1px solid}#kick-ie a{font-weight:700;text-decoration:none;border-bottom:1px dashed}#kick-ie-close{font:700 24px/1 Arial,sans-serif;position:fixed;top:0;right:0;height:inherit;padding:.2em;cursor:pointer;border:none!important}#kick-ie-heading{font:32px/1.5 Arial,sans-serif;position:absolute;top:45%}', // from kick-ie.min.css
       idName: {
         wrap: 'kick-ie',
@@ -260,10 +261,11 @@
   }
 
   KickIE.init = function(opts) {
-    if (IE.ver !== -1) { // Singleton
+    if (_instance) {
       console.warn('KickIE was initialized!');
       return;
     }
+    _instance = true;
     KickIE.resetMessage(); // for custom init
     IE.ver = KickIE.getInternetExplorerVersion();
     if (IE.ver === -1) {
@@ -323,7 +325,7 @@
   };
 
   KickIE.init(); // automatic
-  IE.ver = -1; // reset
+  _instance = false; // once reset
 
   // export
   window.KickIE = function(opts) {
@@ -338,15 +340,12 @@
     lte7: IE.lte7
   };
 
-  // for Sea.js
-  if (typeof define === 'function' && define.cmd) {
-    //console.info('CMD');
-    define(function(require, exports, module) {
-      module.exports = window.KickIE;
-      module.exports.isIE = window.isIE;
-      module.exports.isDualCore = window.isDualCore;
-      module.exports.IE = window.IE;
-    });
+  // for AMD/CMD
+  if (typeof module === 'object' && typeof module.exports === 'object') {
+    module.exports = window.KickIE;
+    module.exports.isIE = window.isIE;
+    module.exports.isDualCore = window.isDualCore;
+    module.exports.IE = window.IE;
   }
 
 })(window, document);
