@@ -151,19 +151,28 @@
       }
     };
 
+    KickIE.close = function(expires) {
+      expires = expires || IE.cookieExpires;
+      var date = new Date();
+      date.setTime(date.getTime() + expires);
+      KickIE.cookies.setItem(IE.cookieName, ':(', date);
+    };
+
+    KickIE.isVisible = function() {
+      return KickIE.cookies.getItem(IE.cookieName) === null;
+    };
+
     KickIE.hideMessage = function() {
       var btn = document.getElementById(KickIE.idName.close);
 
       KickIE.addEvent(btn, 'click', function() {
-        var date = new Date();
-        date.setTime(date.getTime() + IE.cookieExpires);
+        KickIE.close();
         document.getElementById(KickIE.idName.wrap).style.display = 'none';
-        KickIE.cookies.setItem(IE.cookieName, ':(', date);
       });
     };
 
     KickIE.showMessage = function(object) {
-      if (KickIE.cookies.getItem(IE.cookieName) === null) {
+      if (KickIE.isVisible()) {
         var warning = document.createElement('p');
         warning.id = KickIE.idName.wrap;
         warning.innerHTML = (IE.label ? IE.label + '：' : '') + object.message.replace('{{chromeURL}}', google.chromeURL);
@@ -298,7 +307,9 @@
         // placeholder plugin or others, if you want
         var upgradeParams = {
           url: google.chromeURL,
-          label: IE.label
+          label: IE.label,
+          close: KickIE.close,
+          isVisible: KickIE.isVisible()
         };
         if (IE.ver === 9 && killIE >= 9) {
           if (IE.IE9.upgrade) {

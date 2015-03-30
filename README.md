@@ -28,14 +28,21 @@ Kick IE
       label: '砖家提醒',
       msg: {
         ie8: 'IE8 消息提醒',
-        ie7: '<= IE7 消息提醒'
+        ie7: 'IE6-7 消息提醒'
       },
       up8: function(opts) {
         console.log(8);
         var url = opts.url; // #可用的谷歌浏览器下载地址
         var label = opts.label; // 砖家提醒
         var msg = opts.msg; // IE8 消息提醒
-        // your code
+        if (opts.isVisible) { // 是否可显示
+          // your code
+          $('body').append('<div id="kick-ie"><a href="' + url + '">' + msg + '</a> <a id="btn-close">表显示</a></div>');
+          $('#btn-close').on('click', function() {
+            opts.close(3000); // 3秒内不显示
+            $('#kick-ie').remove();
+          });
+        }
       },
       up7: function(opts) {
         console.log(7);
@@ -69,7 +76,7 @@ KickIE接口 | 类型
 
 - 优化标题（可省略）
 - 新增`msg`参数，可自定义提示消息
-- 扩展`up[7-9]`方法参数，可获得传入的`url`,`label`和对应IE版本的`msg`
+- 扩展`up[7-9]`方法参数，可获得传入的`url`,`label`,对应IE版本的`msg`以及`isVisible`和`close(millisecond)`
 - 修复IE7下提示消息中链接的样式问题
 - 修复min脚本bug
 
