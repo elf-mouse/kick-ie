@@ -1,0 +1,11 @@
+{
+  "name": "kickie-test",
+  "spm": {
+    "dependencies": {
+      "detector": "2.2.1",
+      "jquery": "1.8.3",
+      "seajs": "2.3.0",
+      "seajs-wrap": "1.0.2"
+    }
+  }
+}
