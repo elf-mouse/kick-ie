@@ -9,7 +9,7 @@
 
   var _instance = null, // Singleton
     KickIE = {
-      css: '#kick-ie,body{margin:0}#kick-ie,#kick-ie-heading{right:0;left:0;text-align:center}#kick-ie{font:16px/1.5 Arial,sans-serif;position:fixed;top:0;padding:.2em 0;border:1px solid}#kick-ie a{font-weight:700;text-decoration:none;border-bottom:1px dashed}#kick-ie-close{font:700 24px/1 Arial,sans-serif;position:fixed;top:0;right:0;height:inherit;padding:.2em;cursor:pointer;border:none!important}#kick-ie-heading{font:32px/1.5 Arial,sans-serif;position:absolute;top:45%}', // from kick-ie.min.css
+      css: '#kick-ie,body{margin:0}#kick-ie,#kick-ie-heading{right:0;left:0;text-align:center}#kick-ie{font:16px/1.5 Arial,sans-serif;position:fixed;top:0;padding:.2em 0;border:1px solid}#kick-ie a{font-weight:700;text-decoration:none;border-bottom:1px dashed}#kick-ie-close{font:700 24px/1 Arial,sans-serif;position:fixed;top:0;right:0;height:inherit;padding:.2em;cursor:pointer;border:none!important}#kick-ie-heading{font:32px/1.5 Arial,sans-serif;position:absolute;top:45%;_left:36%}', // from kick-ie.min.css
       idName: {
         wrap: 'kick-ie',
         close: 'kick-ie-close',
@@ -283,22 +283,24 @@
       setOptions(opts);
       isIE = true;
       htmlRoot.className = 'ie'; // outdated website never use "Modernizr", I think!
-      switch (IE.ver) {
-        case 9:
-          KickIE.addClass('ie9');
-          IE.lte9 = true;
-          break;
-        case 8:
-          KickIE.addClass('ie8');
-          IE.lte9 = true;
-          IE.lte8 = true;
-          break;
-        case 7:
-          KickIE.addClass('ie7');
-          IE.lte9 = true;
-          IE.lte8 = true;
-          IE.lte7 = true;
-          break;
+      if (IE.ver < 10) {
+        switch (IE.ver) {
+          case 9:
+            KickIE.addClass('ie9');
+            IE.lte9 = true;
+            break;
+          case 8:
+            KickIE.addClass('ie8');
+            IE.lte9 = true;
+            IE.lte8 = true;
+            break;
+          default:
+            KickIE.addClass('ie7');
+            IE.lte9 = true;
+            IE.lte8 = true;
+            IE.lte7 = true;
+            break;
+        }
       }
       if (IE.lte9) {
         KickIE.addCss(); // include css
