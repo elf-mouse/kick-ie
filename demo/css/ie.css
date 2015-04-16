@@ -78,7 +78,7 @@
     top:-1px;
     background:url("../images/ie/wel-tuijian.png");
     _background:none;
-    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/ie/wel-tuijian.png",enabled=true,sizingMethod=crop);
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="//localhost/demo/images/ie/wel-tuijian.png",enabled=true,sizingMethod=crop);
 }
 .wel-text li em{
     display: block;
@@ -90,20 +90,20 @@
 .wel-text li em.chrome{
     background-image: url("../images/ie/logo-chrome.png");
     _background:none;
-    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/ie/logo-chrome.png",enabled=true,sizingMethod=crop);
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="//localhost/demo/images/ie/logo-chrome.png",enabled=true,sizingMethod=crop);
 }
 .wel-text li em.firefox{
     background-image: url("../images/ie/logo-ff.png");
     _background:none;
-    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/ie/logo-ff.png",enabled=true,sizingMethod=crop);
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="//localhost/demo/images/ie/logo-ff.png",enabled=true,sizingMethod=crop);
 }
 .wel-text li em.ie10{
     background-image: url("../images/ie/logo-ie10.png");
     _background:none;
-    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/ie/logo-ie10.png",enabled=true,sizingMethod=crop);
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="//localhost/demo/images/ie/logo-ie10.png",enabled=true,sizingMethod=crop);
 }
 .wel-text li em.safari{
     background-image: url("../images/ie/logo-safari.png");
     _background:none;
-    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="../images/ie/logo-safari.png",enabled=true,sizingMethod=crop);
+    _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="//localhost/demo/images/ie/logo-safari.png",enabled=true,sizingMethod=crop);
 }
