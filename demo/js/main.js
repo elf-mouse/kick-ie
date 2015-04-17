@@ -18,7 +18,6 @@
     label: false,
     up8: function(opts) {
       if (opts.isVisible) {
-        $('head').append('<link rel="stylesheet" href="' + url.css + '">');
         var output = '<div id="kickIe">您使用的浏览器版本较低，会影响网站部分功能，请切换成<a href="javascript:void(0)" class="kick_jisu">极速模式</a>或升级。<a target="_blank" href="' + url.ie + '" class="kick_upgrade">立刻升级</a><em class="kick_close">×</em></div>';
         // 选择浏览器
         output += '<div id="kickIe_bg"></div><div id="kickIe_con"><div class="kickIe_con_padd">' +
